@@ -1,5 +1,5 @@
 {
-    "name": "jngermon/phpunit-entity-tester",
+    "name": "adgoal/phpunit-entity-tester",
     "type": "project",
     "description": "Quickly test your entities",
     "license": "MIT",
@@ -7,17 +7,25 @@
         {
             "name": "Jean-Noël Germon",
             "email": "jn.germon@gmail.com"
+        },
+        {
+            "name": "Andrey Cherny",
+            "email": "a.cherny@adgoal.net"
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "phpunit/phpunit": "~4.8"
+        "php": ">=7.0",
+        "phpunit/phpunit": ">=6"
     },
     "autoload": {
         "psr-4": {
-            "PhpUnitEntityTester\\Fixtures\\": "fixtures/",
-            "PhpUnitEntityTester\\Tests\\": "tests/",
             "PhpUnitEntityTester\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpUnitEntityTester\\Fixtures\\": "fixtures/",
+            "PhpUnitEntityTester\\Tests\\": "tests/"
         }
     }
 }

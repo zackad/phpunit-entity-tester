@@ -2,21 +2,54 @@
 
 namespace PhpUnitEntityTester;
 
-use \PhpUnit_Framework_TestCase as Testcase;
+use \PHPUnit\Framework\TestCase;
 
+/**
+ * Class AccessorTester
+ * @package PhpUnitEntityTester
+ */
 class AccessorTester
 {
+    /**
+     *
+     */
     const USE_SET_DATA = 'USE_SET_DATA';
 
+    /**
+     * @var string
+     */
     public static $MSG_SETTER_METHOD_NOT_FLUENT = "The method '%setterMethod%' is not fluent.";
+    /**
+     * @var string
+     */
     public static $MSG_GETTER_METHOD_BAD_RETURN = "The method '%getterMethod%' does not return the good value.";
 
+    /**
+     * @var
+     */
     protected $entity;
+    /**
+     * @var
+     */
     protected $attribute;
+    /**
+     * @var bool
+     */
     protected $fluent;
+    /**
+     * @var string
+     */
     protected $setterMethod;
+    /**
+     * @var string
+     */
     protected $getterMethod;
 
+    /**
+     * AccessorTester constructor.
+     * @param $entity
+     * @param $attribute
+     */
     public function __construct(
         $entity,
         $attribute
@@ -29,31 +62,48 @@ class AccessorTester
         $this->setterMethod = 'set' . ucfirst($attribute);
         $this->getterMethod = 'get' . ucfirst($attribute);
     }
-    
-    public function fluent($fluent)
+
+    /**
+     * @param $fluent
+     * @return $this
+     */
+    public function fluent($fluent): self
     {
         $this->fluent = $fluent;
 
         return $this;
     }
 
-    public function setterMethod($setterMethod)
+    /**
+     * @param $setterMethod
+     * @return $this
+     */
+    public function setterMethod(string $setterMethod): self
     {
         $this->setterMethod = $setterMethod;
 
         return $this;
     }
 
-    public function getterMethod($getterMethod)
+    /**
+     * @param $getterMethod
+     * @return $this
+     */
+    public function getterMethod(string $getterMethod): self
     {
         $this->getterMethod = $getterMethod;
 
         return $this;
     }
 
-    public function test($setData, $getData = self::USE_SET_DATA)
+    /**
+     * @param $setData
+     * @param string $getData
+     * @return $this
+     */
+    public function test($setData, string $getData = self::USE_SET_DATA): self
     {
-        $getData = $getData == self::USE_SET_DATA ? $setData : $getData;
+        $getData = $getData === self::USE_SET_DATA ? $setData : $getData;
 
         $this->testSetter($setData);
         $this->testGetter($getData);
@@ -61,7 +111,10 @@ class AccessorTester
         return $this;
     }
 
-    private function testSetter($data)
+    /**
+     * @param $data
+     */
+    private function testSetter($data): void
     {
         $setterMethod = $this->setterMethod;
 
@@ -76,7 +129,10 @@ class AccessorTester
         }
     }
 
-    private function testGetter($data)
+    /**
+     * @param $data
+     */
+    private function testGetter($data): void
     {
         $getterMethod = $this->getterMethod;
 
@@ -87,7 +143,11 @@ class AccessorTester
         );
     }
 
-    private function msg($msg)
+    /**
+     * @param $msg
+     * @return mixed
+     */
+    private function msg($msg): string
     {
         $replaces = [
             '%setterMethod%' => $this->setterMethod,

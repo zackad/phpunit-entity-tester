@@ -102,7 +102,7 @@ class EntityForCollection
     
     public function badGetMethodReturnNotArray()
     {
-        return "foo";
+        return 'foo';
     }
 }
 

@@ -4,14 +4,14 @@ You can write very quickly unit tests for the accessors, adders and removers of 
 
 ## Requirements
 
-- PHP : 5.3.3 or later
-- phpunit/phpunit : ~4.8
+- PHP : 7.0 or later
+- phpunit/phpunit : 6 or later
 
 ## Installation
 
 * With Composer
 ```
-composer install jngermon/phpunit-entity-tester
+composer install adgoal/phpunit-entity-tester
 ```
 
 ## Quick example
@@ -24,7 +24,7 @@ namespace Demo\Tests;
 use PhpUnitEntityTester\AccessorTester;
 use PhpUnitEntityTester\AccessorCollectionTester;
 
-class MyEntityTest extends \PHPUnit_Framework_TestCase
+class MyEntityTest extends \PHPUnit\Framework\TestCase
 {
     public function simpleTest()
     {
