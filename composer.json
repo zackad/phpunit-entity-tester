@@ -1,6 +1,6 @@
 {
-    "name": "adgoal/phpunit-entity-tester",
-    "type": "project",
+    "name": "zackad/phpunit-entity-tester",
+    "type": "library",
     "description": "Quickly test your entities",
     "license": "MIT",
     "authors": [
@@ -21,13 +21,13 @@
     },
     "autoload": {
         "psr-4": {
-            "PhpUnitEntityTester\\": "src/"
+            "Zackad\\PhpUnitEntityTester\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpUnitEntityTester\\Fixtures\\": "fixtures/",
-            "PhpUnitEntityTester\\Tests\\": "tests/"
+            "Zackad\\PhpUnitEntityTester\\Fixtures\\": "fixtures/",
+            "Zackad\\PhpUnitEntityTester\\Tests\\": "tests/"
         }
     }
 }
