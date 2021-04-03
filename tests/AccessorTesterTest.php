@@ -2,6 +2,7 @@
 
 namespace PhpUnitEntityTester\Tests;
 
+use PHPUnit\Framework\AssertionFailedError;
 use PhpUnitEntityTester\AccessorTester;
 use PhpUnitEntityTester\Fixtures\Entity\Entity;
 
@@ -23,12 +24,11 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
             ;
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'setNameNotFluent' is not fluent.
-     */
     public function testSetFluent()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('The method \'setNameNotFluent\' is not fluent.');
+
         $this->accessorTester->setterMethod('setNameNotFluent')
             ->test('foo');
     }
@@ -49,12 +49,11 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
             ;
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badGetMethod' does not return the good value.
-     */
     public function testBadGetMethod()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectErrorMessage('The method \'badGetMethod\' does not return the good value.');
+
         $this->accessorTester->getterMethod('badGetMethod')
             ->test('foo');
     }
