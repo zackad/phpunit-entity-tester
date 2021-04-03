@@ -9,9 +9,9 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
 {
     protected $accessorTester;
 
-    public function setup()
+    public function setup():void
     {
-        $entity = new Entity(); 
+        $entity = new Entity();
 
         $this->accessorTester = new AccessorTester($entity, 'name');
     }
@@ -41,7 +41,7 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
 
     public function testGetterSpecial()
     {
-        $entity = new Entity(); 
+        $entity = new Entity();
 
         $nameTester = new AccessorTester($entity, 'name');
         $nameTester->getterMethod('getSpecialName')

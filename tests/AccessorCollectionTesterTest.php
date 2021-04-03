@@ -9,7 +9,7 @@ class AccessorCollectionTesterTest extends \PHPUnit\Framework\TestCase
 {
     protected $collectionTester;
 
-    public function setup()
+    public function setup():void
     {
         $entity = new EntityForCollection();
 
