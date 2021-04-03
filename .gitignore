@@ -5,6 +5,7 @@ docker-compose.env
 /build
 /vendor
 
+composer.lock
 *.swp
 *.swo
 *.cache
