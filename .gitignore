@@ -1,10 +1,10 @@
 docker-compose.env
 .home-developer
 
-/vendor
-
+/.idea
 /build
+/vendor
 
 *.swp
 *.swo
-
+*.cache
