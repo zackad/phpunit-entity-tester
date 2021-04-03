@@ -1,17 +1,18 @@
 <?php
 
-namespace PhpUnitEntityTester\Tests;
+namespace Zackad\PhpUnitEntityTester\Tests;
 
-use PhpUnitEntityTester\AccessorTester;
-use PhpUnitEntityTester\Fixtures\Entity\Entity;
+use PHPUnit\Framework\AssertionFailedError;
+use Zackad\PhpUnitEntityTester\AccessorTester;
+use Zackad\PhpUnitEntityTester\Fixtures\Entity\Entity;
 
 class AccessorTesterTest extends \PHPUnit\Framework\TestCase
 {
     protected $accessorTester;
 
-    public function setup()
+    public function setup():void
     {
-        $entity = new Entity(); 
+        $entity = new Entity();
 
         $this->accessorTester = new AccessorTester($entity, 'name');
     }
@@ -23,12 +24,11 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
             ;
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'setNameNotFluent' is not fluent.
-     */
     public function testSetFluent()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('The method \'setNameNotFluent\' is not fluent.');
+
         $this->accessorTester->setterMethod('setNameNotFluent')
             ->test('foo');
     }
@@ -41,7 +41,7 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
 
     public function testGetterSpecial()
     {
-        $entity = new Entity(); 
+        $entity = new Entity();
 
         $nameTester = new AccessorTester($entity, 'name');
         $nameTester->getterMethod('getSpecialName')
@@ -49,14 +49,12 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
             ;
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badGetMethod' does not return the good value.
-     */
     public function testBadGetMethod()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectErrorMessage('The method \'badGetMethod\' does not return the good value.');
+
         $this->accessorTester->getterMethod('badGetMethod')
             ->test('foo');
     }
 }
-

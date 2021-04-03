@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitEntityTester\Fixtures\Collection;
+namespace Zackad\PhpUnitEntityTester\Fixtures\Collection;
 
 class CollectionNotTraversable implements \Countable
 {
@@ -11,6 +11,7 @@ class CollectionNotTraversable implements \Countable
         $this->items = [];
     }
 
-    public function count() {}
+    public function count()
+    {
+    }
 }
-

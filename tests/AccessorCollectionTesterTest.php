@@ -1,15 +1,17 @@
 <?php
 
-namespace PhpUnitEntityTester\Tests;
+namespace Zackad\PhpUnitEntityTester\Tests;
 
-use PhpUnitEntityTester\AccessorCollectionTester;
-use PhpUnitEntityTester\Fixtures\Entity\EntityForCollection;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\TestCase;
+use Zackad\PhpUnitEntityTester\AccessorCollectionTester;
+use Zackad\PhpUnitEntityTester\Fixtures\Entity\EntityForCollection;
 
-class AccessorCollectionTesterTest extends \PHPUnit\Framework\TestCase
+class AccessorCollectionTesterTest extends TestCase
 {
     protected $collectionTester;
 
-    public function setup()
+    public function setup():void
     {
         $entity = new EntityForCollection();
 
@@ -22,12 +24,11 @@ class AccessorCollectionTesterTest extends \PHPUnit\Framework\TestCase
             ->test('value1', 'value2');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'addTest' doesn't respect unicity.
-     */
     public function testUniqueFail()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'addTest' doesn't respect unicity.");
+
         $this->collectionTester->unique(true)
             ->test('value1', 'value2');
     }
@@ -39,69 +40,63 @@ class AccessorCollectionTesterTest extends \PHPUnit\Framework\TestCase
             ->test('value1', 'value2');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'addTestUnique' respect unicity for nothing.
-     */
     public function testNonUniqueFail()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'addTestUnique' respect unicity for nothing.");
+
         $this->collectionTester->unique(false)
             ->addMethod('addTestUnique')
             ->test('value1', 'value2');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'addTestNotFluent' is not fluent.
-     */
     public function testAddFluent()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'addTestNotFluent' is not fluent.");
+
         $this->collectionTester->fluent(true)
             ->addMethod('addTestNotFluent')
             ->testAdd('value1');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badAddTest' does not add data.
-     */
     public function testBadAddMethod()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badAddTest' does not add data.");
+
         $this->collectionTester
             ->addMethod('badAddTest')
             ->testAdd('value1');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'removeTestNotFluent' is not fluent.
-     */
     public function testRemoveFluent()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'removeTestNotFluent' is not fluent.");
+
         $this->collectionTester->fluent(true)
             ->removeMethod('removeTestNotFluent')
             ->testAdd('value1')
             ->testRemove('value1');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badRemoveTest' does not remove data.
-     */
     public function testBadRemoveMethod()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badRemoveTest' does not remove data.");
+
         $this->collectionTester
             ->removeMethod('badRemoveTest')
             ->testAdd('value1')
             ->testRemove('value1');
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badRemoveTestReset' does not remove the good number of items.
-     */
     public function testBadRemoveMethodReset()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badRemoveTestReset' does not remove the good number of items.");
+
         $this->collectionTester
             ->removeMethod('badRemoveTestReset')
             ->testAdd('value1')
@@ -115,48 +110,43 @@ class AccessorCollectionTesterTest extends \PHPUnit\Framework\TestCase
             ->testGet();
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badGetTests' must not return null.
-     */
     public function testBadGetMethod()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badGetTests' must not return null.");
+
         $this->collectionTester
             ->getMethod('badGetTests')
             ->testGet();
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badGetCollectionNotCountable' must return an instance of interface 'Coutable'.
-     */
     public function testBadGetMethodNotCountable()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badGetCollectionNotCountable' must return an instance of interface 'Coutable'.");
+
         $this->collectionTester
             ->getMethod('badGetCollectionNotCountable')
             ->testGet();
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badGetCollectionNotTraversable' must return an instance of interface 'Traversable'.
-     */
     public function testBadGetMethodNotTraversable()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badGetCollectionNotTraversable' must return an instance of interface 'Traversable'.");
+
         $this->collectionTester
             ->getMethod('badGetCollectionNotTraversable')
             ->testGet();
     }
 
-    /**
-     * @expectedException \PHPUnit\Framework\AssertionFailedError
-     * @expectedExceptionMessage The method 'badGetMethodReturnNotArray' must return a Countable and Traversable object or an array.
-     */
     public function testBadGetMethodReturnNotArray()
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage("The method 'badGetMethodReturnNotArray' must return a Countable and Traversable object or an array.");
+
         $this->collectionTester
             ->getMethod('badGetMethodReturnNotArray')
             ->testGet();
     }
 }
-

@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitEntityTester;
+namespace Zackad\PhpUnitEntityTester;
 
 use \PHPUnit\Framework\AssertionFailedError;
 use \PHPUnit\Framework\TestCase;
@@ -295,8 +295,7 @@ class AccessorCollectionTester
                 $this->msg(self::$MSG_GET_METHOD_MUST_RETURN_TRAVERSABLE_OBJECT)
             );
         } elseif ($get !== null) {
-            TestCase::assertInternalType(
-                'array',
+            TestCase::assertIsArray(
                 $get,
                 $this->msg(self::$MSG_GET_METHOD_MUST_RETURN_AN_ARRAY)
             );
@@ -375,4 +374,3 @@ class AccessorCollectionTester
         return $msg;
     }
 }
-

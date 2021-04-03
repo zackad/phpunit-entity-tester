@@ -1,9 +1,9 @@
 <?php
 
-namespace PhpUnitEntityTester\Fixtures\Entity;
+namespace Zackad\PhpUnitEntityTester\Fixtures\Entity;
 
-use PhpUnitEntityTester\Fixtures\Collection\CollectionNotCountable;
-use PhpUnitEntityTester\Fixtures\Collection\CollectionNotTraversable;
+use Zackad\PhpUnitEntityTester\Fixtures\Collection\CollectionNotCountable;
+use Zackad\PhpUnitEntityTester\Fixtures\Collection\CollectionNotTraversable;
 
 class EntityForCollection
 {
@@ -12,12 +12,11 @@ class EntityForCollection
     protected $collectionNotCountable;
     protected $collectionNotTraversable;
 
-    public function __construct(
-        
-    ) {
-       $this->tests = [];
-       $this->collectionNotCountable = new CollectionNotCountable();
-       $this->collectionNotTraversable = new CollectionNotTraversable();
+    public function __construct()
+    {
+        $this->tests = [];
+        $this->collectionNotCountable = new CollectionNotCountable();
+        $this->collectionNotTraversable = new CollectionNotTraversable();
     }
 
     public function addTest($test)
@@ -50,7 +49,7 @@ class EntityForCollection
 
     public function removeTest($test)
     {
-        $this->tests = array_filter($this->tests, function($localtest) use ($test) {
+        $this->tests = array_filter($this->tests, function ($localtest) use ($test) {
             return $test != $localtest;
         });
 
@@ -59,7 +58,7 @@ class EntityForCollection
 
     public function removeTestNotFluent($test)
     {
-        $this->tests = array_filter($this->tests, function($localtest) use ($test) {
+        $this->tests = array_filter($this->tests, function ($localtest) use ($test) {
             return $test != $localtest;
         });
     }
@@ -99,10 +98,9 @@ class EntityForCollection
     {
         return $this->collectionNotTraversable;
     }
-    
+
     public function badGetMethodReturnNotArray()
     {
         return 'foo';
     }
 }
-

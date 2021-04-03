@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitEntityTester\Fixtures\Entity;
+namespace Zackad\PhpUnitEntityTester\Fixtures\Entity;
 
 /**
  * Class Entity
@@ -56,4 +56,3 @@ class Entity
         return $this->name . 'wrong_data';
     }
 }
-
