@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitEntityTester;
+namespace Zackad\PhpUnitEntityTester;
 
 use \PHPUnit\Framework\TestCase;
 
@@ -161,4 +161,3 @@ class AccessorTester
         return $msg;
     }
 }
-

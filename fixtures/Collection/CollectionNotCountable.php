@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitEntityTester\Fixtures\Collection;
+namespace Zackad\PhpUnitEntityTester\Fixtures\Collection;
 
 class CollectionNotCountable implements \IteratorAggregate
 {
@@ -11,6 +11,7 @@ class CollectionNotCountable implements \IteratorAggregate
         $this->items = [];
     }
 
-    public function getIterator() {}
+    public function getIterator()
+    {
+    }
 }
-

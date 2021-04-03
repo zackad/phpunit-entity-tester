@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitEntityTester;
+namespace Zackad\PhpUnitEntityTester;
 
 use \PHPUnit\Framework\AssertionFailedError;
 use \PHPUnit\Framework\TestCase;
@@ -374,4 +374,3 @@ class AccessorCollectionTester
         return $msg;
     }
 }
-

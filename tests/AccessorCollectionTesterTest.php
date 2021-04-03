@@ -1,11 +1,11 @@
 <?php
 
-namespace PhpUnitEntityTester\Tests;
+namespace Zackad\PhpUnitEntityTester\Tests;
 
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\TestCase;
-use PhpUnitEntityTester\AccessorCollectionTester;
-use PhpUnitEntityTester\Fixtures\Entity\EntityForCollection;
+use Zackad\PhpUnitEntityTester\AccessorCollectionTester;
+use Zackad\PhpUnitEntityTester\Fixtures\Entity\EntityForCollection;
 
 class AccessorCollectionTesterTest extends TestCase
 {

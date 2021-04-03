@@ -1,10 +1,10 @@
 <?php
 
-namespace PhpUnitEntityTester\Tests;
+namespace Zackad\PhpUnitEntityTester\Tests;
 
 use PHPUnit\Framework\AssertionFailedError;
-use PhpUnitEntityTester\AccessorTester;
-use PhpUnitEntityTester\Fixtures\Entity\Entity;
+use Zackad\PhpUnitEntityTester\AccessorTester;
+use Zackad\PhpUnitEntityTester\Fixtures\Entity\Entity;
 
 class AccessorTesterTest extends \PHPUnit\Framework\TestCase
 {
@@ -58,4 +58,3 @@ class AccessorTesterTest extends \PHPUnit\Framework\TestCase
             ->test('foo');
     }
 }
-
