@@ -4,14 +4,14 @@ You can write very quickly unit tests for the accessors, adders and removers of 
 
 ## Requirements
 
-- PHP : 7.0 or later
-- phpunit/phpunit : 6 or later
+- PHP : 7.2 or later
+- phpunit/phpunit : 8 or later
 
 ## Installation
 
 * With Composer
 ```
-composer install adgoal/phpunit-entity-tester
+composer require zackad/phpunit-entity-tester --dev
 ```
 
 ## Quick example
@@ -21,20 +21,21 @@ This is an example of unit test file:
 
 namespace Demo\Tests;
 
-use PhpUnitEntityTester\AccessorTester;
-use PhpUnitEntityTester\AccessorCollectionTester;
+use PHPUnit\Framework\TestCase;
+use Zackad\PhpUnitEntityTester\AccessorTester;
+use Zackad\PhpUnitEntityTester\AccessorCollectionTester;
 
-class MyEntityTest extends \PHPUnit\Framework\TestCase
+class MyEntityTest extends TestCase
 {
     public function simpleTest()
     {
         $entity = new MyEntity(); // The entity that you want to test
 
         // Test 'setName' and 'getName'
-        new AccessorTester($entity, 'name')->test('John Doe');
+        (new AccessorTester($entity, 'name'))->test('John Doe');
 
         // Test 'addFruit', 'removeFruit' and 'getFruits'
-        new AccessorCollectionTester($entity, 'fruits')->test('apple', 'pear');
+        (new AccessorCollectionTester($entity, 'fruits'))->test('apple', 'pear');
     }
 }
 ```
@@ -45,7 +46,7 @@ class MyEntityTest extends \PHPUnit\Framework\TestCase
 
 #### 1. Add 'use' statement
 ```php
-use PhpUnitEntityTester\AccessorTester;
+use Zackad\PhpUnitEntityTester\AccessorTester;
 ```
 #### 2. Create the tester object
 ```php
@@ -100,7 +101,7 @@ This method calls the getter method and tests the return with value in parameter
  
 #### 1. Add 'use' statement
 ```php
-use PhpUnitEntityTester\AccessorCollectionTester;
+use Zackad\PhpUnitEntityTester\AccessorCollectionTester;
 ```
 #### 2. Create the tester object
 ```php
