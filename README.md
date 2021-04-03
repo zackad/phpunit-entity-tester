@@ -62,7 +62,7 @@ Your can change the setter and getter methods like this :
 $tester->setterMethod('setFoo') //fluent method
     ->getteMethod('getBar'); // fluent method
 ```
-You can remove the fluent constaint for the setter (set to `true` by default)
+You can remove the fluent constraint for the setter (set to `true` by default)
 ```php
 $tester->fluent(false);
 ```
@@ -109,7 +109,7 @@ $tester = new AccessorCollectionTester($entity, 'items');
 ```
 Where `$entity` is the entity to test and `'items'` the base name for adder, remover and getter methods. For the adder and remover methods, the final 's' of the base name will be removed.
 
-In this case, ther tester will test the methods 'addItem', 'removeItem' and 'getItems'.
+In this case, the tester will test the methods 'addItem', 'removeItem' and 'getItems'.
 
 #### 3. Configure the tester
 You can change the adder, remover and getter methods like this :
@@ -122,8 +122,8 @@ You can remove the fluent constraint for the adder and remover methods (set to `
 ```php
 $tester->fluent(false);
 ```
-By default, the tester considere that the collection respect the unicity of its items.
-You can force the tester to considere thaht the collection don't respect the unicity like that :
+By default, the tester consider that the collection respect the unicity of its items.
+You can force the tester to consider that the collection don't respect the unicity like that :
 ```php
 $tester->unique(false);
 ```
@@ -138,11 +138,11 @@ In this case the tester :
 1. calls and tests the adder method with the first value
 2. try to remove the second value (that is not in collection yet)
 3. calls and tests the adder method with the second value
-4. try to add again the first value (to tetunique constraint)
+4. try to add again the first value (to the unique constraint)
 5. try to remove the first value
 6. add again the first value (to obtain a collection with the first and the second value in it)
 
-This method uses the following three methods that you can also use separatly.
+This method uses the following three methods that you can also use separately.
 
 ##### Test Adder
 You can also only test the adder method like that :
@@ -161,7 +161,7 @@ $tester->testRemove('value');
 ```
 This method calls the remover method and tests :
 1. the fluent constraint
-2. if the value is not in colleciton (removed)
+2. if the value is not in collection (removed)
 3. if the remover removed the good number of items (all that match value but not more)
 
 ##### Test Getter
@@ -210,4 +210,3 @@ public function providerTestAccessor()
 You can also use the process for `AccessorCollectionTester` by customize the test method.
 ## Credits
 Special thanks for gerg0ire who encourage me to do that library
-
